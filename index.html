@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css" />
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <script src="/js/maskfield.js"></script>
+<head>
+    <title>FCx Labs Evaluation</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand ms-5">FCx Labs Evaluation</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container mt-4">
+        <div class="container col-md-3">
+                
+            <div class="collapse" id="collapseLogin">
+                <div id="divMessagecollapseLogin" class="card card-body bg-warning" style="color:#FFFFFF; font-size:0.9rem;">
+                    Invalid Login or Password. Try again.
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalRecoverAccess" tabindex="-1" aria-labelledby="modalRecoverAccessLabel" aria-hidden="true">
+            <form>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header mb-0">
+                            <h5 class="modal-title" id="modalRecoverAccessLabel">Recover Password</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="mt-0 pt-1 row mb-0 justify-content-center" style="font-size:0.7rem; color:#008CBA;">
+                            Fill in the fields below with your data. 
+                        </div>
+                        <div class="modal-body mt-0">
+                            <div class="mb-0 row">
+                                <label class="col-sm-3 col-form-label pe-0" style="font-size:0.8rem;">E-mail</label>
+                                <div class="col-sm-9">
+                                    <input id="inputEmail" type="email" placeholder="the@email.com " maxlength="150" class="form-control form-control-sm w-75" autocomplete="off" onKeyPress="controlMask(this,caractEmail)" required style="font-size:0.8rem;">
+                                </div>
+                            </div>
+                            <div class="mb-0 row">
+                                <label class="col-sm-3 col-form-label pe-0" style="font-size:0.8rem;">Mother Name</label>
+                                <div class="col-sm-9">
+                                    <input id="inputMotherName" type="text" placeholder="type the mother's name" maxlength="100" class="form-control form-control-sm w-75" autocomplete="off" required style="font-size:0.8rem;">
+                                </div>
+                            </div>
+                            <div class="mb-0 row">
+                                <label class="col-sm-3 col-form-label pe-0" style="font-size:0.8rem;">Birth Date</label>
+                                <div class="col-sm-9">
+                                    <input id="inputBirthDate" type="text" maxlength="10" placeholder="31/12/2022" onKeyPress="controlMask(this,caractNumeric)" onblur="maskDateFormat(this);" onfocus="removeCharInput(this)" class="form-control form-control-sm w-25" autocomplete="off" required style="font-size:0.8rem;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-1 row mt-2 justify-content-center" style="font-size:0.7rem; color:#008CBA;">
+                            If the information matches our records, we will send you an e-mail. 
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-primary" style="width:200px" onclick="tryRecoverAccess(event)">Send e-mail</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+            </div>
+
+            <form>
+                <div class="mb-3 mt-5">
+                    <label for="InputLogin" class="form-label mb-0">User</label>
+                    <input type="text" class="form-control" id="InputLogin" aria-describedby="loginHelp" autocomplete="off" onKeyPress="controlMask(this,caractUppCase)">
+                    <div id="loginHelp" class="form-text">Never share your LOGIN with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="InputPassword1" class="form-label mb-0">Password</label>
+                    <input type="password" class="form-control" id="InputPassword"/>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary" onclick="loginUser(event)">Submit</button>
+                    </div>
+                    <div class="col-auto mt-3">
+                        <a class="fw-light" style="color:#008CBA; font-size:0.8rem; text-decoration:none;" href="#" onclick="openModalRecoverPassword()">I forgot my login details</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script type="text/javascript" src="/js/smtp.js"></script>
+    <script type="text/javascript" src="/js/moment.js"></script>
+    <script type="text/javascript" src="/js/connection.requests.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+
+</body>
+</html>

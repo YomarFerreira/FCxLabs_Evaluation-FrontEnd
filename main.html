@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/bootstrap.min.css" />
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/session.js"></script>
+    <script src="js/maskfield.js"></script>
+ <head>
+    <title>FCx Labs Evaluation</title>
+</head>
+<body onclick="reaffirmSession()">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand ms-5">FCx Labs Evaluation</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/main.html">Home
+                                <span class="visually-hidden">...</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <form class="d-flex justify-content-end">
+                           <select id="selectQuery" class="form-select form-select-sm me-5" style="width:190px; height:40px" aria-label=".form-select-sm example">
+                                <option value="init" selected>Choose the Query</option>
+                                <option value="name">Query by Name</option>
+                                <option value="registration">Query by Registration</option>
+                                <option value="login">Query by Login</option>
+                                <option value="status">Query by Status</option>
+                                <option value="birthdate">Query by Birth date</option>
+                                <option value="insert">Query by Insert Date</option>
+                                <option value="update">Query by Update Date</option>
+                                <option value="agegroup">Query by Age Group</option>
+                            </select>
+                        </form>
+                    </ul>                    
+                </div>
+                <div class="modal fade" id="modalSearch" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="modalSearchLabel" value=""></h5>
+                        <button type="button" id="closeModalSearch" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form>
+                        <div class="modal-body">
+                            <div class="row g-2">
+                            <div id="divModalSearchInput01" class="col-auto">
+                                <input class="form-control" id="search1" type="text" style="font-size:0.8rem;" placeholder="Search">
+                            </div>
+                            <div class="col-auto">
+                                <input class="form-control" hidden id="search2" type="text" style="font-size:0.8rem;" placeholder="Search">
+                            </div>
+                            <div class="col-auto">
+                                <select id="selectSearch" hidden class="form-select form-select-sm" style="font-size:0.8rem;" aria-label=".form-select-sm example">
+                                </select>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" id="buttonSearchForm" class="btn btn-primary btn-sm" style="min-width:110px;" onclick="researches(event,modalSearchLabel.value)">Search</button>
+                        </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <main class="container mt-4">
+        <div class="card border-primary mb-3" style="min-height:550px;">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col ms-2">Users</div>
+                    <div id="divUserSession" class="col-auto me-2 mt-1" style="font-size:0.9rem; color:#008CBA;"></div>
+                </div>
+            </div>
+            <div class="card-body overflow-auto">
+                <div class="visually-hidden">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Write something in the card's subtitle.</p>
+                </div>
+                <div class="mb-4">
+                     <button type="button" class="btn btn-primary btn-sm" id="buttonNewUser" onclick="openModalCreateUser()">
+                        New User
+                    </button>
+               </div>
+                <table class="table table-sm table-hover table-bordered" style="font-size:0.7rem;">
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Person Register</th>
+                        <th scope="col">Birth Date</th>
+                        <th scope="col">Login</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Mother Name</th>
+                        <th scope="col">Insert Date</th>
+                        <th scope="col">Update Date</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody-main"></tbody>
+                </table>
+
+                <div id="liveToast" class="toast bg-warning shadow shadow-intensity-xl position-fixed top-0 start-50 translate-middle-x border-0"
+                 style="z-index:1090; margin-top:20px;" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body" id="toastBody" Style="color:#FFFFFF; font-size:0.8rem;"></div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="modal fade pt-5" id="usersModal" tabindex="-1" aria-labelledby="usersModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="usersModalLabel">Create New User</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="formUser">
+                        <div class="modal-body">
+                            <div hidden><input id="hiddenPrimaryKey" type="hidden" value="" /><input id="hiddenDateInsert" type="hidden" value="" /></div>
+
+                            <div class="mb-0 row">
+                                <label class="col-sm-2 col-form-label pe-0" style="font-size:0.8rem;">Name</label>
+                                <div class="col-sm-10">
+                                    <input id="inputName" type="text" placeholder="type the full name" maxlength="100" class="form-control form-control-sm w-75" autocomplete="off" onKeyPress="controlMask(this,caractAlphaAcent)" required style="font-size:0.8rem;">
+                                </div>
+                            </div>
+                            <div class="mb-0 row">
+                                <label class="col-sm-2 col-form-label pe-0" style="font-size:0.8rem;">Login</label>
+                                <div class="col-sm-10">
+                                    <input id="inputLogin" type="text" placeholder="type the LOGIN" maxlength="50" class="form-control form-control-sm w-25" autocomplete="off" onKeyPress="controlMask(this,caractUppCase)" required style="font-size:0.8rem;">
+                                </div>
+                            </div>
+                            <div class="mb-0 row">
+                                <label class="col-sm-2 col-form-label pe-0" style="font-size:0.8rem;">Password</label>
+                                <div class="col-sm-10">
+                                    <input id="inputPassword" type="password" placeholder="type the password" maxlength="50" class="form-control form-control-sm w-50" required style="font-size:0.8rem;">
+                                </div>
+                            </div>
+                            <div class="mb-0 row">
+                                <label class="col-sm-2 col-form-label pe-0" style="font-size:0.8rem;">E-mail</label>
+                                <div class="col-sm-10">
+                                    <input id="inputEmail" type="email" placeholder="the@email.com " maxlength="150" class="form-control form-control-sm w-75" autocomplete="off" onKeyPress="controlMask(this,caractEmail)" required style="font-size:0.8rem;">
+                                </div>
+                            </div>
+                            <div class="mb-0 row">
+                                <label class="col-sm-2 col-form-label pe-0" style="font-size:0.8rem;">Phone</label>
+                                <div class="col-sm-10">
+                                    <input id="inputPhone" type="text" placeholder="(99)99999-9999" onKeyPress="controlMask(this,caractNumeric)" onblur="maskPhone(this)" onfocus="removeCharInput(this)"  maxlength="14" class="form-control form-control-sm w-25" autocomplete="off" required style="font-size:0.8rem;">
+                                </div>
+                            </div>
+                            <div class="mb-0 row">
+                                <label class="col-sm-2 col-form-label pe-0" style="font-size:0.8rem;">Person Registration</label>
+                                <div class="col-sm-10">
+                                    <input id="inputCpf" type="text" maxlength="14" placeholder="999.999.999-99" onKeyPress="controlMask(this,caractNumeric)" onblur="maskPersonalRegister(this);" onfocus="removeCharInput(this)" class="form-control form-control-sm w-50" autocomplete="off" required style="font-size:0.8rem;">
+                                </div>
+                            </div>
+                            <div class="mb-0 row">
+                                <label class="col-sm-2 col-form-label pe-0" style="font-size:0.8rem;">Birth Date</label>
+                                <div class="col-sm-10">
+                            <input id="inputBirthDate" type="text" maxlength="8" placeholder="31/12/2022" onKeyPress="controlMask(this,caractNumeric);" onblur="maskDateFormat(this);" onfocus="removeCharInput(this);" class="form-control form-control-sm w-25" autocomplete="off" required style="font-size:0.8rem;">
+                                </div>
+                            </div>
+                            <div class="mb-0 row">
+                                <label class="col-sm-2 col-form-label pe-0" style="font-size:0.8rem;">Mother Name</label>
+                                <div class="col-sm-10">
+                                    <input id="inputMotherName" type="text" placeholder="type the mother's name" maxlength="100" class="form-control form-control-sm w-75" autocomplete="off" onKeyPress="controlMask(this,caractAlphaAcent)" required style="font-size:0.8rem;">
+                                </div>
+                            </div>
+                            <div class="mb-0 row">
+                                <label class="form-check-label col-sm-2 col-form-label pe-0" for="flexSwitchCheckChecked" style="font-size:0.8rem;">Situation</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check form-switch">
+                                    <input class="form-check-input mt-2" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked disabled><label class="mt-2 text-primary" id="labelSwitchSituation" style="font-size:0.8rem;">Active</label>
+                                    </div>
+                                      
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="min-width:110px;">Close</button>
+                            <button type="submit" id="buttonSaveForm" class="btn btn-primary btn-sm" style="min-width:110px;" onclick="saveUser(event)">Save</button>
+                        </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row justify-content-end mt-0 mb-0">
+                        <div class="col-auto me-3" style="color:#008CBA; font-size:0.8rem;">
+                             <span>EXPORT: </span>
+                        </div>   
+                        <div class="col-auto" style="color:#008CBA; font-size:0.8rem;">
+                             <a style="color:#008CBA; font-size:0.8rem; text-decoration:none;" onclick="ExportJSON(5)" href="#">xls</a>
+                        </div>   
+                        <div class="col-auto" style="color:#008CBA; font-size:0.8rem;">
+                             <a style="color:#008CBA; font-size:0.8rem; text-decoration:none;" onclick="ExportJSON(4)" href="#">doc</a>
+                        </div>   
+                        <div class="col-auto" style="color:#008CBA; font-size:0.8rem;">
+                             <a style="color:#008CBA; font-size:0.8rem; text-decoration:none;" onclick="ExportJSON(3)" href="#">pdf</a>
+                        </div>
+                    </div>
+                </div>
+                <div class=" mb-4 justify-content-center">
+                    <section id="paginate ">
+                        <form id="Navigator">
+                          <div class="row align-items-center">
+                             <div class="col-2"></div>
+                             <div class="col-8">
+                               <div class="paginate" style="font-size:0.8rem; height:29px;">
+                                  <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link text-truncate" style="padding-top:0.05rem; color:#008CBA; height:25px;">Total Register:</a>
+                                    </li>
+                                    <li class="page-item disabled">
+                                        <div type="text" id="totalRegister" class="page-link" style="padding-top:0.05rem; color:#008CBA; height:25px;"></div>
+                                    </li>
+                                    <li class="page-item">
+                                        <a id="previousPage" class="page-link" style="padding-top:0.11rem; min-width:90px; text-align:center; height:25px; cursor: pointer; color:#444444f3;">&lt;&lt;Previous</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <input type="text" id="currentPage" class="page-link" style="height:25px; width:80px; border:solid 1px #008cba; text-align:center; background-color:#008bba49;">
+                                    </li>
+                                    <li class="page-item">
+                                        <a id="nextPage" class="page-link" style="padding-top:0.11rem; min-width:90px; text-align:center; height:25px; cursor:pointer; color:#444444f3;">Next&gt;&gt;</a>
+                                    </li>
+                                    <li class="page-item disabled">
+                                        <a class="page-link text-truncate" style="padding-top:0.05rem; color:#008CBA; height:25px;">Total Pages:</a>
+                                    </li>
+                                    <li class="page-item disabled">
+                                        <div type="text" id="maxPage" class="page-link" style="padding-top:0.05rem; color:#008CBA; height:25px;"></div>
+                                    </li>
+                                  </ul>
+                               </div>
+                             </div>
+                            <div class="col-2"></div>
+                         </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+          </div>
+    </main>
+
+    <script type="text/javascript" src="/js/moment.js"></script>
+    <script type="text/javascript" src="/js/connection.requests.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+    <script type="text/javascript" src="/js/server.responses.js"></script>
+    <script type="text/javascript" src="/js/crud.js"></script>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/exporter.js"></script>
+
+</body>
+</html>
