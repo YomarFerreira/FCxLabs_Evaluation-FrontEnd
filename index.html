@@ -73,7 +73,7 @@
             <form>
                 <div class="mb-3 mt-5">
                     <label for="InputLogin" class="form-label mb-0">User</label>
-                    <input type="text" class="form-control" id="InputLogin" aria-describedby="loginHelp" autocomplete="off" onKeyPress="controlMask(this,caractUppCase)">
+                    <input type="text" class="form-control" id="InputLogin" aria-describedby="loginHelp" autocomplete="off" onkeypress="controlMask(this,caractUppCase)" onkeyup="controlMask(this,caractUppCase)" >
                     <div id="loginHelp" class="form-text">Never share your LOGIN with anyone else.</div>
                 </div>
                 <div class="mb-3">

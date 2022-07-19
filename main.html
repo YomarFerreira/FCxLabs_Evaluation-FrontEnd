@@ -98,7 +98,6 @@
                 <table class="table table-sm table-hover table-bordered" style="font-size:0.7rem;">
                     <thead>
                     <tr>
-                        <th scope="col">Id</th>
                         <th scope="col">Name</th>
                         <th scope="col">Person Register</th>
                         <th scope="col">Birth Date</th>
@@ -109,6 +108,7 @@
                         <th scope="col">Insert Date</th>
                         <th scope="col">Update Date</th>
                         <th scope="col">Status</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody id="tbody-main"></tbody>
@@ -135,25 +135,25 @@
                             <div class="mb-0 row">
                                 <label class="col-sm-2 col-form-label pe-0" style="font-size:0.8rem;">Name</label>
                                 <div class="col-sm-10">
-                                    <input id="inputName" type="text" placeholder="type the full name" maxlength="100" class="form-control form-control-sm w-75" autocomplete="off" onKeyPress="controlMask(this,caractAlphaAcent)" required style="font-size:0.8rem;">
+                                    <input id="inputName" type="text" placeholder="type the full name" maxlength="100" class="form-control form-control-sm w-75" autocomplete="off" onKeyPress="controlMask(this,caractAlphaAcent)" onkeyup="controlMask(this,caractAlphaAcent)" required style="font-size:0.8rem;">
                                 </div>
                             </div>
                             <div class="mb-0 row">
                                 <label class="col-sm-2 col-form-label pe-0" style="font-size:0.8rem;">Login</label>
                                 <div class="col-sm-10">
-                                    <input id="inputLogin" type="text" placeholder="type the LOGIN" maxlength="50" class="form-control form-control-sm w-25" autocomplete="off" onKeyPress="controlMask(this,caractUppCase)" required style="font-size:0.8rem;">
+                                    <input id="inputLogin" type="text" placeholder="type the LOGIN" maxlength="50" class="form-control form-control-sm w-25" autocomplete="off" onKeyPress="controlMask(this,caractUppCase)" onkeyup="controlMask(this,caractUppCase)" required style="font-size:0.8rem;">
                                 </div>
                             </div>
                             <div class="mb-0 row">
                                 <label class="col-sm-2 col-form-label pe-0" style="font-size:0.8rem;">Password</label>
                                 <div class="col-sm-10">
-                                    <input id="inputPassword" type="password" placeholder="type the password" maxlength="50" class="form-control form-control-sm w-50" required style="font-size:0.8rem;">
+                                    <input id="inputPassword" type="password" placeholder="type the password" maxlength="50" class="form-control form-control-sm w-50" onKeyPress="controlMask(this,caractPassword)" onkeyup="controlMask(this,caractPassword)" required style="font-size:0.8rem;">
                                 </div>
                             </div>
                             <div class="mb-0 row">
                                 <label class="col-sm-2 col-form-label pe-0" style="font-size:0.8rem;">E-mail</label>
                                 <div class="col-sm-10">
-                                    <input id="inputEmail" type="email" placeholder="the@email.com " maxlength="150" class="form-control form-control-sm w-75" autocomplete="off" onKeyPress="controlMask(this,caractEmail)" required style="font-size:0.8rem;">
+                                    <input id="inputEmail" type="email" placeholder="the@email.com " maxlength="150" class="form-control form-control-sm w-75" autocomplete="off" onKeyPress="controlMask(this,caractEmail)" onkeyup="controlMask(this,caractEmail)" required style="font-size:0.8rem;">
                                 </div>
                             </div>
                             <div class="mb-0 row">
@@ -177,7 +177,7 @@
                             <div class="mb-0 row">
                                 <label class="col-sm-2 col-form-label pe-0" style="font-size:0.8rem;">Mother Name</label>
                                 <div class="col-sm-10">
-                                    <input id="inputMotherName" type="text" placeholder="type the mother's name" maxlength="100" class="form-control form-control-sm w-75" autocomplete="off" onKeyPress="controlMask(this,caractAlphaAcent)" required style="font-size:0.8rem;">
+                                    <input id="inputMotherName" type="text" placeholder="type the mother's name" maxlength="100" class="form-control form-control-sm w-75" autocomplete="off" onKeyPress="controlMask(this,caractAlphaAcent)" onkeyup="controlMask(this,caractAlphaAcent)" required style="font-size:0.8rem;">
                                 </div>
                             </div>
                             <div class="mb-0 row">

@@ -20,7 +20,6 @@
 
           body += `
           <tr>
-            <td style="width:40px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.id}</td>
             <td style="max-width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.name}</td>
             <td style="width:100px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${formatShowRegPersonal(user.cpf)}</td>
             <td style="width:90px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${dateBirthDay}</td>
@@ -179,6 +178,7 @@
       }else if (title=="Enter User Login"){
         divModalInput1.setAttribute('class', 'col-auto');
         inputSearch1.setAttribute('onKeyPress','controlMask(this,caractUppCase);')
+        inputSearch1.setAttribute('onkeyup','controlMask(this,caractUppCase);')
         inputSearch1.removeAttribute('onblur');
         inputSearch1.removeAttribute('onfocus');
         inputSearch1.setAttribute('autocomplete','off')

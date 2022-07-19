@@ -78,36 +78,34 @@ function execMask(elementInDelay, methodDelay){
 }
 
 function caractNumeric(value){
-  value = value.replace(/\D/g,"") //Only Numbers
-  return value
+  value = value.replace(/\D/g,""); //Only Numbers
+  return value;
 }
 
 function caractUppCase(value){
-  value = value.toUpperCase()
-  return value
+  value = value.toUpperCase();
+  return value;
 }
 
 function caractLowCase(value){
-  value = value.toLowerCase()
-  return value
+  value = value.toLowerCase();
+  return value;
 }
 
 function caractAlphaAcent(value){
-  value = value.replace(/[^AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÃãÂâÁáÊêÉéÍíÕõÔôÓóÚúÇç .]/g,"") //Only AlphaAcent
+  value = value.replace(/[^AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÃãÂâÁáÊêÉéÍíÕõÔôÓóÚúÇç .]/g,""); //Only AlphaAcent
   return value
 }
 
 function caractEmail(value){
-  value = value.replace(/[^abcdefghijklmnopqrstuvwxyz0123456789_.@]/g,"") //LowerCase
-  return value
+  value = value.replace(/[^abcdefghijklmnopqrstuvwxyz0123456789_.@]/g,""); //LowerCase
+  return value;
 }
 
-
-
-
-
-
-
+function caractPassword(value){
+ value = value.replace(/[^AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789~#$-_@]/g,""); //Only AlphaNumber Special Character
+return value;
+}
 
 
 function formatAllDateTime(fDate, destiny){
