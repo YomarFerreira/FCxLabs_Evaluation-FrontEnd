@@ -14,12 +14,11 @@
 <body onclick="reaffirmSession()">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container-fluid">
-                <a class="navbar-brand ms-5">FCx Labs Evaluation</a>
+            <div class="container-fluid ms-2 me-2">
+                <a class="navbar-brand">FCx Labs Evaluation</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
-            
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
@@ -30,7 +29,7 @@
                     </ul>
                     <ul class="navbar-nav">
                         <form class="d-flex justify-content-end">
-                           <select id="selectQuery" class="form-select form-select-sm me-5" style="width:190px; height:40px" aria-label=".form-select-sm example">
+                           <select id="selectQuery" class="form-select form-select-sm" style="width:190px; height:40px" aria-label=".form-select-sm example">
                                 <option value="init" selected>Choose the Query</option>
                                 <option value="name">Query by Name</option>
                                 <option value="registration">Query by Registration</option>
@@ -77,15 +76,15 @@
             </div>
         </nav>
     </header>
-    <main class="container mt-4">
-        <div class="card border-primary mb-3" style="min-height:550px;">
+    <main class="container-fluid mt-4">
+        <div class="card border-primary ms-2 me-2">
             <div class="card-header">
                 <div class="row">
-                    <div class="col ms-2">Users</div>
+                    <div class="col ms-1">Users</div>
                     <div id="divUserSession" class="col-auto me-2 mt-1" style="font-size:0.9rem; color:#008CBA;"></div>
                 </div>
             </div>
-            <div class="card-body overflow-auto">
+            <div class="card-body overflow-auto" style="min-height:460px;">
                 <div class="visually-hidden">
                     <h4 class="card-title">Card title</h4>
                     <p class="card-text">Write something in the card's subtitle.</p>
@@ -186,7 +185,6 @@
                                     <div class="form-check form-switch">
                                     <input class="form-check-input mt-2" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked disabled><label class="mt-2 text-primary" id="labelSwitchSituation" style="font-size:0.8rem;">Active</label>
                                     </div>
-                                      
                                 </div>
                             </div>
                         </div>
@@ -198,61 +196,79 @@
                         </div>
                     </div>
                 </div>
-                <div class="container">
-                    <div class="row justify-content-end mt-0 mb-0">
-                        <div class="col-auto me-3" style="color:#008CBA; font-size:0.8rem;">
-                             <span>EXPORT: </span>
-                        </div>   
-                        <div class="col-auto" style="color:#008CBA; font-size:0.8rem;">
-                             <a style="color:#008CBA; font-size:0.8rem; text-decoration:none;" onclick="ExportJSON(5)" href="#">xls</a>
-                        </div>   
-                        <div class="col-auto" style="color:#008CBA; font-size:0.8rem;">
-                             <a style="color:#008CBA; font-size:0.8rem; text-decoration:none;" onclick="ExportJSON(4)" href="#">doc</a>
-                        </div>   
-                        <div class="col-auto" style="color:#008CBA; font-size:0.8rem;">
-                             <a style="color:#008CBA; font-size:0.8rem; text-decoration:none;" onclick="ExportJSON(3)" href="#">pdf</a>
-                        </div>
+            </div>
+
+            <div class="ms-3 container">
+                <div class="row justify-content-start mb-4">
+                    <div class="col-auto" style="color:#008CBA; font-size:0.8rem;">
+                         <span>EXPORT: </span>
+                    </div>   
+                    <div class="col-auto" style="color:#008CBA; font-size:0.8rem;">
+                         <a style="color:#008CBA; font-size:0.8rem; text-decoration:none;" onclick="ExportJSON(5)" href="#">xls</a>
+                    </div>   
+                    <div class="col-auto" style="color:#008CBA; font-size:0.8rem;">
+                         <a style="color:#008CBA; font-size:0.8rem; text-decoration:none;" onclick="ExportJSON(4)" href="#">doc</a>
+                    </div>   
+                    <div class="col-auto" style="color:#008CBA; font-size:0.8rem;">
+                         <a style="color:#008CBA; font-size:0.8rem; text-decoration:none;" onclick="ExportJSON(3)" href="#">pdf</a>
                     </div>
                 </div>
-                <div class=" mb-4 justify-content-center">
-                    <section id="paginate ">
-                        <form id="Navigator">
-                          <div class="row align-items-center">
-                             <div class="col-2"></div>
-                             <div class="col-8">
-                               <div class="paginate" style="font-size:0.8rem; height:29px;">
-                                  <ul class="pagination justify-content-center">
-                                    <li class="page-item disabled">
-                                        <a class="page-link text-truncate" style="padding-top:0.05rem; color:#008CBA; height:25px;">Total Register:</a>
-                                    </li>
-                                    <li class="page-item disabled">
-                                        <div type="text" id="totalRegister" class="page-link" style="padding-top:0.05rem; color:#008CBA; height:25px;"></div>
-                                    </li>
-                                    <li class="page-item">
-                                        <a id="previousPage" class="page-link" style="padding-top:0.11rem; min-width:90px; text-align:center; height:25px; cursor: pointer; color:#444444f3;">&lt;&lt;Previous</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <input type="text" id="currentPage" class="page-link" style="height:25px; width:80px; border:solid 1px #008cba; text-align:center; background-color:#008bba49;">
-                                    </li>
-                                    <li class="page-item">
-                                        <a id="nextPage" class="page-link" style="padding-top:0.11rem; min-width:90px; text-align:center; height:25px; cursor:pointer; color:#444444f3;">Next&gt;&gt;</a>
-                                    </li>
-                                    <li class="page-item disabled">
-                                        <a class="page-link text-truncate" style="padding-top:0.05rem; color:#008CBA; height:25px;">Total Pages:</a>
-                                    </li>
-                                    <li class="page-item disabled">
-                                        <div type="text" id="maxPage" class="page-link" style="padding-top:0.05rem; color:#008CBA; height:25px;"></div>
-                                    </li>
-                                  </ul>
-                               </div>
-                             </div>
-                            <div class="col-2"></div>
-                         </div>
-                        </form>
-                    </section>
-                </div>
             </div>
-          </div>
+            <div class="mb-4 justify-content-center">
+                <section id="paginate ">
+                    <form id="Navigator">
+                      <div class="row align-items-center">
+                         <div class="col-2"></div>
+                         <div class="col-8">
+
+                           <div class="row align-items-center">
+
+                           <div class="col" style="font-size:0.8rem; height:29px;">
+                              <ul class="pagination justify-content-center">
+                                <li class="page-item disabled" style="background-color:#F7F7F7;">
+                                    <a class="page-link text-truncate" style="padding-top:0.05rem; color:#008CBA; height:25px; background-color:#F7F7F7;">Total Register:</a>
+                                </li>
+                                <li class="page-item disabled">
+                                    <div type="text" id="totalRegister" class="page-link" style="padding-top:0.05rem; color:#008CBA; height:25px; background-color:#F7F7F7;"></div>
+                                </li>
+                              </ul>
+                           </div>
+                           <div class="col" style="font-size:0.8rem; height:29px;">
+                              <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a id="previousPage" class="page-link" style="padding-top:0.11rem; min-width:90px; text-align:center; height:25px; cursor: pointer; color:#444444f3;">&lt;&lt;Previous</a>
+                                </li>
+                                <li class="page-item">
+                                    <input type="text" id="currentPage" class="page-link" style="height:25px; width:80px; border:solid 1px #008cba; text-align:center; background-color:#008bba49;">
+                                </li>
+                                <li class="page-item">
+                                    <a id="nextPage" class="page-link" style="padding-top:0.11rem; min-width:90px; text-align:center; height:25px; cursor:pointer; color:#444444f3;">Next&gt;&gt;</a>
+                                </li>
+                              </ul>
+                           </div>
+                           <div class="col" style="font-size:0.8rem; height:29px;">
+                              <ul class="pagination justify-content-center">
+                                <li class="page-item disabled" style="background-color:#F7F7F7;">
+                                    <a class="page-link text-truncate" style="padding-top:0.05rem; color:#008CBA; height:25px; background-color:#F7F7F7;">Total Pages:</a>
+                                </li>
+                                <li class="page-item disabled">
+                                    <div type="text" id="maxPage" class="page-link" style="padding-top:0.05rem; color:#008CBA; height:25px; background-color:#F7F7F7;"></div>
+                                </li>
+                              </ul>
+                           </div>
+
+                           </div>
+
+                         </div>
+                        <div class="col-2"></div>
+                     </div>
+                    </form>
+                </section>
+            </div>
+
+
+
+        </div>
     </main>
 
     <script type="text/javascript" src="/js/moment.js"></script>

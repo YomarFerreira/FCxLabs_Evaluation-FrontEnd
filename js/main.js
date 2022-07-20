@@ -20,16 +20,16 @@
 
           body += `
           <tr>
-            <td style="max-width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.name}</td>
-            <td style="width:100px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${formatShowRegPersonal(user.cpf)}</td>
+            <td style="max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.name}</td>
+            <td style="width:110px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${formatShowRegPersonal(user.cpf)}</td>
             <td style="width:90px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${dateBirthDay}</td>
-            <td style="width:90px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.login}</td>
-            <td style="max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.email}</td>
-            <td style="width:105px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.phone}</td>
-            <td style="max-width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.motherName}</td>
+            <td style="width:100px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.login}</td>
+            <td style="max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.email}</td>
+            <td style="width:115px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.phone}</td>
+            <td style="max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.motherName}</td>
             <td style="width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${dateInsert}</td>
             <td style="width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${dateChange}</td>
-            <td style="width:50px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.status}</td>
+            <td style="width:70px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${user.status}</td>
             <td style="width:80px;>
               <div class="dropdown">
                 <button style="font-size:0.8rem; font-weight:100em; height:22px" class="pt-0 btn btn-primary dropdown-toggle" type="button" id="dropdownMenu[${user.id}]" data-bs-toggle="dropdown" aria-expanded="false">
