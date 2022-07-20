@@ -219,7 +219,7 @@
     document.getElementById("selectQuery").value="init"
   })
 
-  document.getElementById("selectQuery").addEventListener("click", (event)=> {
+  document.getElementById("selectQuery").addEventListener("change", (event)=> {
 
 
     if(document.getElementById("selectQuery").value=="name"){
